@@ -1,0 +1,92 @@
+{
+  "timestamp": "20251002_073631",
+  "image_id": "d28212f8",
+  "model": "mobilenetssd",
+  "confidence_threshold": 0.25,
+  "detections": [
+    {
+      "class": "bus",
+      "confidence": 0.724,
+      "bbox": {
+        "x1": 405,
+        "y1": 230,
+        "x2": 498,
+        "y2": 332
+      }
+    },
+    {
+      "class": "person",
+      "confidence": 0.439,
+      "bbox": {
+        "x1": 2,
+        "y1": 160,
+        "x2": 77,
+        "y2": 339
+      }
+    },
+    {
+      "class": "person",
+      "confidence": 0.438,
+      "bbox": {
+        "x1": 367,
+        "y1": 279,
+        "x2": 388,
+        "y2": 327
+      }
+    },
+    {
+      "class": "person",
+      "confidence": 0.401,
+      "bbox": {
+        "x1": 343,
+        "y1": 290,
+        "x2": 361,
+        "y2": 333
+      }
+    },
+    {
+      "class": "person",
+      "confidence": 0.384,
+      "bbox": {
+        "x1": 144,
+        "y1": 145,
+        "x2": 162,
+        "y2": 205
+      }
+    },
+    {
+      "class": "person",
+      "confidence": 0.368,
+      "bbox": {
+        "x1": 138,
+        "y1": 139,
+        "x2": 155,
+        "y2": 194
+      }
+    },
+    {
+      "class": "person",
+      "confidence": 0.258,
+      "bbox": {
+        "x1": 91,
+        "y1": 158,
+        "x2": 109,
+        "y2": 208
+      }
+    },
+    {
+      "class": "person",
+      "confidence": 0.254,
+      "bbox": {
+        "x1": 319,
+        "y1": 291,
+        "x2": 341,
+        "y2": 335
+      }
+    }
+  ],
+  "total_objects": 8,
+  "output_image": "output/images/20251002_073631_d28212f8_mobilenetssd_detected.jpg",
+  "public_image_url": "http://localhost:8001/outputs/images/20251002_073631_d28212f8_mobilenetssd_detected.jpg",
+  "image_filename": "20251002_073631_d28212f8_mobilenetssd_detected.jpg"
+}

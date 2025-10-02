@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Object Detection Studio</title>
+  <link rel="icon" type="image/svg+xml" href="{{ url_for('static', path='favicon.svg') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="{{ url_for('static', path='css/style.css') }}" rel="stylesheet">
+</head>
+<body>
+  <!-- Animated background -->
+  <div class="animated-bg"></div>
+  
+  <!-- Floating particles -->
+  <div class="particles">
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+  </div>
+
+  <nav class="navbar">
+    <div class="container">
+      <a class="brand" href="#">
+        <div class="logo-icon">🤖</div>
+        <span>AI Detection Studio</span>
+      </a>
+    </div>
+  </nav>
+
+  <main class="container mt-5">
+    <div class="hero-section">
+      <h1 class="hero-title">
+        <span class="gradient-text">AI-Powered</span> Object Detection
+      </h1>
+      <p class="hero-subtitle">Upload any image and let our advanced AI models detect objects with precision</p>
+    </div>
+
+    <section class="glass-card main-card">
+      <div class="card-glow"></div>
+      <div class="card-content">
+        <form id="uploadForm" enctype="multipart/form-data">
+          <div class="controls-grid">
+            <div class="form-group">
+              <label for="modelSelect" class="form-label">
+                <span class="label-icon">🧠</span>
+                AI Model
+              </label>
+              <div class="custom-select">
+                <select id="modelSelect" class="form-select">
+                  <option value="yolov8" selected>YOLOv8 (Fast & Accurate)</option>
+                  <option value="yolov9">YOLOv9 (Latest & Advanced)</option>
+                  <option value="yolov3">YOLOv3 (Classic & Reliable)</option>
+                  <option value="mobilenetssd">MobileNet-SSD (Lightweight)</option>
+                </select>
+                <div class="select-arrow">
+                  <svg width="12" height="8" viewBox="0 0 12 8" fill="none">
+                    <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="confInput" class="form-label">
+                <span class="label-icon">🎯</span>
+                Confidence Threshold
+              </label>
+              <div class="input-wrapper">
+                <input id="confInput" type="range" min="0.1" max="0.9" step="0.05" value="0.25" class="form-range" />
+                <span class="range-value">0.25</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="upload-zone" id="uploadArea">
+            <div class="upload-content">
+              <div class="upload-icon">
+                <div class="icon-circle">
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                    <polyline points="17,8 12,3 7,8"/>
+                    <line x1="12" y1="3" x2="12" y2="15"/>
+                  </svg>
+                </div>
+              </div>
+              <h3 class="upload-title">Drop your image here</h3>
+              <p class="upload-subtitle">or click to browse files</p>
+              <input type="file" id="imageInput" name="file" accept="image/*" hidden>
+              <button type="button" class="btn-upload" onclick="document.getElementById('imageInput').click()">
+                Choose Image
+              </button>
+            </div>
+          </div>
+
+          <div id="imagePreview" class="preview-section hide">
+            <h6 class="section-title">Selected Image</h6>
+            <div class="image-preview-wrapper">
+              <img id="previewImg" src="" alt="Preview" class="preview-image">
+            </div>
+            <button type="submit" class="btn-primary btn-lg">
+              <span class="btn-icon">🚀</span>
+              Detect Objects
+            </button>
+          </div>
+        </form>
+
+        <div id="loading" class="loading-section hide">
+          <div class="loading-animation">
+            <div class="loading-spinner"></div>
+            <div class="loading-dots">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+          <p class="loading-text">Analyzing image with AI magic...</p>
+        </div>
+
+        <div id="results" class="results-section hide">
+          <div class="results-grid">
+            <div class="result-card">
+              <div class="card-header">
+                <h3 class="card-title">
+                  <span class="title-icon">🎯</span>
+                  Detection Results
+                </h3>
+              </div>
+              <div class="result-image-wrapper">
+                <img id="resultImg" src="" alt="Detection Result" class="result-image">
+              </div>
+            </div>
+
+            <div class="result-card">
+              <div class="card-header">
+                <h3 class="card-title">
+                  <span class="title-icon">📊</span>
+                  Detected Objects
+                </h3>
+              </div>
+              <div class="result-content">
+                <div id="summary" class="summary-section"></div>
+                <div class="table-container">
+                  <table class="results-table" id="detectionsTable">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Class</th>
+                        <th>Confidence</th>
+                        <th>Coordinates</th>
+                      </tr>
+                    </thead>
+                    <tbody></tbody>
+                  </table>
+                </div>
+                <div class="action-buttons">
+                  <button id="downloadJson" class="btn-secondary">
+                    <span class="btn-icon">💾</span>
+                    Download JSON
+                  </button>
+                  <button id="downloadImage" class="btn-secondary">
+                    <span class="btn-icon">🖼️</span>
+                    Download Image
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2025 AI Detection Studio • Powered by Rudragouda and Niru</p>
+  </footer>
+
+  <script src="{{ url_for('static', path='js/main.js') }}"></script>
+</body>
+</html>

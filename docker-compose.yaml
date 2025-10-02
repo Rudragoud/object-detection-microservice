@@ -1,0 +1,61 @@
+name: object-detection-microservice
+
+services:
+  ai_backend:
+    build:
+      context: ./ai_backend
+      dockerfile: Dockerfile
+      target: development  # Use development stage
+    container_name: ai_backend_dev
+    ports:
+      - "8001:8001"
+    environment:
+      - CUDA_VISIBLE_DEVICES=""
+      - PYTHONUNBUFFERED=1
+      - MOBILENETSSD_DIR=/app/models
+    volumes:
+      # Bind mount for live code reload
+      - ./ai_backend:/app
+      # Persist model downloads
+      - ai_models:/app/models
+      # Persist outputs
+      - ./ai_backend/output:/app/output
+    networks:
+      - detection_network
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 4G
+        reservations:
+          memory: 2G
+
+  ui_backend:
+    build:
+      context: ./ui_backend
+      dockerfile: Dockerfile
+      target: development  # Use development stage
+    container_name: ui_backend_dev
+    ports:
+      - "8000:8000"
+    environment:
+      - AI_BACKEND_URL=http://ai_backend:8001
+      - PYTHONUNBUFFERED=1
+    volumes:
+      # Bind mount for live code reload
+      - ./ui_backend:/app
+      # Persist uploads
+      - ./ui_backend/static/uploads:/app/static/uploads
+    depends_on:
+      - ai_backend
+    networks:
+      - detection_network
+    restart: unless-stopped
+
+volumes:
+  ai_models:
+    driver: local
+
+networks:
+  detection_network:
+    driver: bridge

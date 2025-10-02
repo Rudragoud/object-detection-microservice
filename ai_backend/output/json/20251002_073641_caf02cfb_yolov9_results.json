@@ -1,0 +1,162 @@
+{
+  "timestamp": "20251002_073641",
+  "image_id": "caf02cfb",
+  "model": "yolov9",
+  "confidence_threshold": 0.25,
+  "detections": [
+    {
+      "class": "person",
+      "confidence": 0.807,
+      "bbox": {
+        "x1": 198,
+        "y1": 212,
+        "x2": 224,
+        "y2": 310
+      }
+    },
+    {
+      "class": "person",
+      "confidence": 0.797,
+      "bbox": {
+        "x1": 167,
+        "y1": 185,
+        "x2": 200,
+        "y2": 256
+      }
+    },
+    {
+      "class": "person",
+      "confidence": 0.726,
+      "bbox": {
+        "x1": 146,
+        "y1": 285,
+        "x2": 192,
+        "y2": 336
+      }
+    },
+    {
+      "class": "person",
+      "confidence": 0.702,
+      "bbox": {
+        "x1": 58,
+        "y1": 216,
+        "x2": 103,
+        "y2": 312
+      }
+    },
+    {
+      "class": "person",
+      "confidence": 0.666,
+      "bbox": {
+        "x1": 16,
+        "y1": 231,
+        "x2": 92,
+        "y2": 335
+      }
+    },
+    {
+      "class": "person",
+      "confidence": 0.515,
+      "bbox": {
+        "x1": 46,
+        "y1": 157,
+        "x2": 70,
+        "y2": 232
+      }
+    },
+    {
+      "class": "person",
+      "confidence": 0.488,
+      "bbox": {
+        "x1": 390,
+        "y1": 273,
+        "x2": 413,
+        "y2": 313
+      }
+    },
+    {
+      "class": "boat",
+      "confidence": 0.404,
+      "bbox": {
+        "x1": 403,
+        "y1": 232,
+        "x2": 499,
+        "y2": 333
+      }
+    },
+    {
+      "class": "person",
+      "confidence": 0.401,
+      "bbox": {
+        "x1": 322,
+        "y1": 269,
+        "x2": 344,
+        "y2": 303
+      }
+    },
+    {
+      "class": "person",
+      "confidence": 0.381,
+      "bbox": {
+        "x1": 195,
+        "y1": 157,
+        "x2": 209,
+        "y2": 200
+      }
+    },
+    {
+      "class": "person",
+      "confidence": 0.381,
+      "bbox": {
+        "x1": 300,
+        "y1": 305,
+        "x2": 339,
+        "y2": 337
+      }
+    },
+    {
+      "class": "bench",
+      "confidence": 0.337,
+      "bbox": {
+        "x1": 29,
+        "y1": 305,
+        "x2": 67,
+        "y2": 336
+      }
+    },
+    {
+      "class": "person",
+      "confidence": 0.302,
+      "bbox": {
+        "x1": 369,
+        "y1": 292,
+        "x2": 389,
+        "y2": 330
+      }
+    },
+    {
+      "class": "boat",
+      "confidence": 0.295,
+      "bbox": {
+        "x1": 293,
+        "y1": 164,
+        "x2": 312,
+        "y2": 179
+      }
+    },
+    {
+      "class": "person",
+      "confidence": 0.258,
+      "bbox": {
+        "x1": 161,
+        "y1": 163,
+        "x2": 180,
+        "y2": 206
+      }
+    }
+  ],
+  "total_objects": 15,
+  "output_image": "output/images/20251002_073641_caf02cfb_yolov9_detected.jpg",
+  "public_image_url": "http://localhost:8001/outputs/images/20251002_073641_caf02cfb_yolov9_detected.jpg",
+  "image_filename": "20251002_073641_caf02cfb_yolov9_detected.jpg"
+}

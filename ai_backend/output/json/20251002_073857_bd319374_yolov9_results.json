@@ -1,0 +1,32 @@
+{
+  "timestamp": "20251002_073857",
+  "image_id": "bd319374",
+  "model": "yolov9",
+  "confidence_threshold": 0.25,
+  "detections": [
+    {
+      "class": "cat",
+      "confidence": 0.895,
+      "bbox": {
+        "x1": 0,
+        "y1": 11,
+        "x2": 639,
+        "y2": 312
+      }
+    },
+    {
+      "class": "laptop",
+      "confidence": 0.345,
+      "bbox": {
+        "x1": 1,
+        "y1": 305,
+        "x2": 627,
+        "y2": 479
+      }
+    }
+  ],
+  "total_objects": 2,
+  "output_image": "output/images/20251002_073857_bd319374_yolov9_detected.jpg",
+  "public_image_url": "http://localhost:8001/outputs/images/20251002_073857_bd319374_yolov9_detected.jpg",
+  "image_filename": "20251002_073857_bd319374_yolov9_detected.jpg"
+}
