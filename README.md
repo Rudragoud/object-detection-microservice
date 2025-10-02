@@ -13,7 +13,7 @@ Real-time Results: Instant object detection with bounding boxes
 Download Results: JSON data and annotated images
 
 
-🐳 Quick Start with Docker (Recommended)
+# 🐳 Quick Start with Docker (Recommended)
 Prerequisites
 Docker and Docker Compose
 
@@ -41,7 +41,7 @@ docker compose down
 
 
 
-💻 Manual Setup (Without Docker)
+# 💻 Manual Setup (Without Docker)
 Prerequisites
 Python 3.11+
 
